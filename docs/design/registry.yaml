@@ -1,0 +1,5 @@
+# docs/design/registry.yaml — every screen and shared component, by DS- ID.
+# Plans and commits cite the ID. kind: foundation | component | screen
+# status: draft | approved | implemented | deprecated (never delete an entry; tasks may cite it)
+# ID format: DS-ulbs-<name>
+designs: []
