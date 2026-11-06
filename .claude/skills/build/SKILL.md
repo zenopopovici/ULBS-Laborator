@@ -11,6 +11,7 @@ You build exactly the approved plan. If the plan is wrong or impossible, stop an
 report; do not improvise. Unrequested behaviour is a defect.
 
 ## 1. Branch
+
 From the default branch (develop if present): `feat|fix|chore/<short-name>`. Commit
 only on that branch. Never push, merge to a shared branch, tag or release without
 the user's go.
@@ -33,6 +34,7 @@ test author wrote the tests, skip step 2. Under `/start`, return the handoff
 the session with the ticket journal. Never merge.
 
 ## 2. Tests first (repos with tests)
+
 1. Write the tests for the plan's behaviours, in the repo's existing test style.
 2. Run them. Each new test must **fail for the right reason** (the behaviour is
    missing), not because the setup is broken.
@@ -41,6 +43,7 @@ the session with the ticket journal. Never merge.
 No test suite: list each behaviour as "checked by hand" with how you will check it.
 
 ## 3. Code
+
 - Write code until the tests pass. **Never change what a test asserts.** Mechanical
   fixes (compile error, path, setup) are allowed and named in the report.
 - Read the nearest existing example; match its idiom, naming and comment density.
@@ -57,6 +60,7 @@ No test suite: list each behaviour as "checked by hand" with how you will check 
   requirements: stop and ask.
 
 ## 4. UI changes (visual apps)
+
 1. A new or changed screen is built only from its **confirmed** mock in
    `docs/design/mocks/` (DESIGN.md → Procedure), never from the board or Figma. Not
    confirmed yet: stop and ask. Use only tokens from `docs/design/DESIGN.md`. A new color, size or font is a
@@ -71,16 +75,19 @@ No test suite: list each behaviour as "checked by hand" with how you will check 
    not done.
 
 ## 5. Verify (definition of done)
+
 Run every check in AGENTS.md section 6. Report each with its result. A failure is
 reported with its output; never call a failed or skipped check done.
 
 ## 6. Record
+
 - A reusable practice you established → `candidate` entry in `docs/agents/PATTERNS.md`.
 - A constraint the work settled → decision PROPOSAL to the user.
 - A question that came up and stays open → `Q-` entry.
 - Commit: `<type>(<scope>): <what and why>` with the session's co-author trailer.
 
 ## 7. Report
+
 What changed (files), tests (added · passing · assertions changed: must be 0),
 checks run and results, screenshots (UI), defects fixed on the way (with their
 reproduction), deviations from the plan and why, new abstractions or dependencies

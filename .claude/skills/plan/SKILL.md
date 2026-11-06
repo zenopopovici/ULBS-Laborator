@@ -11,6 +11,7 @@ You plan; you do not edit code. The output is one plan the user approves, adjust
 drops. Nothing is built from an unapproved plan.
 
 ## 1. Load
+
 1. `git fetch --all --prune`, `git pull --ff-only`; note the branch and any uncommitted work.
 2. `AGENTS.md`, `CONTEXT.md`, `docs/agents/DECISIONS.md`, `PATTERNS.md`, `CONTRACTS.md`,
    `OPEN-QUESTIONS.md`; `ARCHITECTURE.md` for structural changes.
@@ -23,6 +24,7 @@ For a large or multi-part change, spawn the `planner` agent per independent part
 (planning is read-only, so they can run in parallel) and merge their plans.
 
 ## 2. Check coverage
+
 List what the request does not say. A gap that changes the result is a **blocking
 question**: ask it now, all in one message. A gap the user cannot answer becomes a
 `Q-` entry and that part is out of scope. Never fill a gap with a guess.
@@ -85,20 +87,23 @@ The knowledge list must be complete: a plan built on a wrong rule is wrong even 
 every step looks right.
 
 ## Team addon
+
 If `AGENTS.md` has the "Team workflow" block: a ticket ID is required (ask if
 missing), read the ticket, its parent and every comment first, and also write the
 plan to `docs/agents/tasks/<ticket>/PLAN.md`. Record each knowledge call there.
+
 - One plan per **delivery**: it may cover the ticket's dependent subtasks. Add under
   Size: `Repos · branches` (the integration branch) and `Tasks covered`
   (`<ticket> (Fixes | Part of)` each). Sequencing may also be `separate PR stacked
-  on <ticket>`, only when a part is independently reviewable or releasable.
+on <ticket>`, only when a part is independently reviewable or releasable.
 - Complete the **context brief** in `OVERVIEW.md`: where the code is, ownership (one
   builder, or worker → part), the commands that verify it.
 - **Fast mode** (the `/start` fast lane): the planner reads the ticket itself and
   fills the whole context brief (`.claude/agents/planner.md`).
 
 ## 4. Gate
+
 Show the plan. Ask the user to approve, adjust or drop it, and to call each
-knowledge entry. A *wrong* or *outdated* call becomes a PROPOSAL (AGENTS.md → The
-gate). An *answered* call updates the Q- entry. Then stop.
+knowledge entry. A _wrong_ or _outdated_ call becomes a PROPOSAL (AGENTS.md → The
+gate). An _answered_ call updates the Q- entry. Then stop.
 <!-- graffino-agentic:end -->
