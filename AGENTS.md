@@ -105,7 +105,15 @@ python3 docs/agents/tools/ledger-lint.py
 - Any server service (database, API, web server) runs in Docker, never on the host (D-001).
 
 ## 5. Release
-Not set. The remote has one branch, `main`, and no tags. Never push without the user's go.
+Annotated semver tag on `main`, then a GitHub release with generated notes:
+
+```bash
+git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin vX.Y.Z
+gh release create vX.Y.Z --title "vX.Y.Z" --generate-notes
+```
+
+The remote has one branch, `main`. Last release: `v1.0.0`. Never push, tag or release
+without the user's go.
 
 ## 6. Definition of done
 - Tests pass (command not set yet: Q-002).
