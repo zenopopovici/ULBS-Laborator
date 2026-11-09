@@ -86,21 +86,6 @@ run the ledger lint.
 The knowledge list must be complete: a plan built on a wrong rule is wrong even if
 every step looks right.
 
-## Team addon
-
-If `AGENTS.md` has the "Team workflow" block: a ticket ID is required (ask if
-missing), read the ticket, its parent and every comment first, and also write the
-plan to `docs/agents/tasks/<ticket>/PLAN.md`. Record each knowledge call there.
-
-- One plan per **delivery**: it may cover the ticket's dependent subtasks. Add under
-  Size: `Repos · branches` (the integration branch) and `Tasks covered`
-  (`<ticket> (Fixes | Part of)` each). Sequencing may also be `separate PR stacked
-on <ticket>`, only when a part is independently reviewable or releasable.
-- Complete the **context brief** in `OVERVIEW.md`: where the code is, ownership (one
-  builder, or worker → part), the commands that verify it.
-- **Fast mode** (the `/start` fast lane): the planner reads the ticket itself and
-  fills the whole context brief (`.claude/agents/planner.md`).
-
 ## 4. Gate
 
 Show the plan. Ask the user to approve, adjust or drop it, and to call each

@@ -24,15 +24,6 @@ cherry-pick, then fast-forward; history stays linear); a conflict in code or tes
 goes back to a builder, then the affected tests run again. Remove a worktree only
 after its commits are on your branch.
 
-**Team addon** (AGENTS.md has the "Team workflow" block): work on the delivery's
-integration branch: if it doesn't exist yet, push it, open the draft PR and comment
-both links on every ticket it covers first. Parallel parts use private worker
-branches that are never pushed (`/start` integrates them). Commit titles
-`<ticket> - <type>(<scope>): …`, naming the ticket each commit implements. When a
-test author wrote the tests, skip step 2. Under `/start`, return the handoff
-(`.claude/agents/builder.md`) and leave the journal to the conductor; otherwise end
-the session with the ticket journal. Never merge.
-
 ## 2. Tests first (repos with tests)
 
 1. Write the tests for the plan's behaviours, in the repo's existing test style.
@@ -54,8 +45,7 @@ No test suite: list each behaviour as "checked by hand" with how you will check 
   in the report. Never save effort by weakening a test or dropping error handling.
 - **Defects you meet.** One your own work introduced: fix it. An existing one that
   blocks an approved acceptance criterion, with clear expected behaviour and a small
-  fix: write the failing reproduction first (team addon: the test author writes it),
-  then fix it, and name cause, fix and check in the report. Anything else: don't fix
+  fix: write the failing reproduction first, then fix it, and name cause, fix and check in the report. Anything else: don't fix
   it; name it in the report as an observation. Unspecified behaviour or conflicting
   requirements: stop and ask.
 

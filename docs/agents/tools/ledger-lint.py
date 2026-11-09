@@ -17,7 +17,6 @@ Superseded decisions and patterns leave the always-loaded files: their index lin
 go to DECISIONS-SUPERSEDED.md / PATTERNS-SUPERSEDED.md (same topic headings), and an
 entry written in the main file moves there too. Entries in topic files stay put.
 --fix does the moving; a check reports an entry in the wrong file.
-STATE.md (team addon): at most 150 lines, each table row at most 220 characters.
 """
 import argparse, os, re, sys
 
@@ -34,7 +33,6 @@ KINDS = {  # prefix: (main file, topic dir, required fields, allowed statuses, s
           ["open", "investigating", "answered", "deferred"], None),
 }
 SPLIT_AT = 150
-STATE_ROW_MAX = 220
 HEAD = re.compile(r"^(#{2,3}) (?:(?P<repo>[\w.-]+):)?(?P<id>(?:D|PATTERN|C|Q)-\d{3,})\s*·\s*(?P<title>.+?)\s*$")
 FIELD = re.compile(r"^- \*\*(?P<k>[A-Za-z ]+):\*\*\s*(?P<v>.*)$")
 LINK = re.compile(r"`(?P<repo>[\w.-]+):docs/agents/CONTRACTS\.md#(?P<id>C-\d{3,})`")
@@ -184,15 +182,6 @@ def lint(fix=False):
             if m and m.group(1) not in {x["id"] for x in entries}:
                 errors.append(f"{rel(e['file'])}:{e['line']} {e['id']} superseded-by {m.group(1)}, which does not exist")
         index_check(prefix, entries, errors, fix)
-    state = os.path.join(AG, "STATE.md")
-    if os.path.exists(state):
-        slines = open(state, encoding="utf-8").read().splitlines()
-        if len(slines) > SPLIT_AT:
-            errors.append(f"{rel(state)}: {len(slines)} lines — STATE.md stays at {SPLIT_AT} or fewer (an index, not a narrative)")
-        for n, line in enumerate(slines, 1):
-            if line.startswith("|") and len(line) > STATE_ROW_MAX:
-                errors.append(f"{rel(state)}:{n} row has {len(line)} characters — at most {STATE_ROW_MAX}; "
-                              "the detail belongs in the ticket's OVERVIEW.md")
     # cross-repo contract links
     for p in files_for("C"):
         for n, line in enumerate(open(p, encoding="utf-8"), 1):
