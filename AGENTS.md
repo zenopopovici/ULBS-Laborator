@@ -112,7 +112,7 @@ git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin vX.Y.Z
 gh release create vX.Y.Z --title "vX.Y.Z" --generate-notes
 ```
 
-The remote has one branch, `main`. Last release: `v1.0.0`. Never push, tag or release
+The remote has one branch, `main`. Last release: `v1.1.0`. Never push, tag or release
 without the user's go.
 
 ## 6. Definition of done
